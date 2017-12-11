@@ -22,9 +22,13 @@ class StudentResult {
 
     public function getScore() {
         for($i = 0; $i < $this->totalStudents; $i++) {
-//            array_push($this->score, $this->student[$i]->score);
-            echo $this->grade($this->student[$i]->score);
+            $this->score[ $this->student[$i]->name] = $this->grade($this->student[$i]->score);
         }
+    }
+
+    public function studentDetail($id) {
+        $this->student[$id]->$newprop;
+        return $this->student[$id];
     }
 
     /**
@@ -32,17 +36,16 @@ class StudentResult {
      * @return bool|string
      */
     public function grade($score) {
-        $grade = ($score > 0 && $score < 40) ?? 'F';
-        $grade = ($score) ? ($score > 39 && $score < 45): 'E';
-        $grade = ($score) ? ($score > 44 && $score < 50): 'D';
-        $grade = ($score) ? ($score > 49 && $score < 60): 'C';
-        $grade = ($score) ? ($score > 59 && $score < 70): 'B';
-        $grade = ($score) ? ($score >= 70  && $score <= 100): 'A';
-        return $grade;
+        if($score >= 0 && $score < 40) return 'F';
+        if($score > 39 && $score < 45) return 'E';
+        if($score > 44 && $score < 50) return'D';
+        if($score > 49 && $score < 60)return 'C';
+        if($score > 59 && $score < 70)return 'B';
+        if($score >= 70  && $score <= 100)return 'A';
     }
 }
 
 $studentData = new StudentResult('data.json');
 
-$studentData->getScore();
-var_dump($studentData->score);
+ print_r($studentData->studentDetail(20));
+//var_dump($studentData->score);
