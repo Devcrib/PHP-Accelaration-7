@@ -45,10 +45,6 @@ class De_ES {
 
 $x = new De_ES("key=>val,fsf,value_2,rere");
 
-
-
-
-
 $funq = function($collect, $key){
            $collect;
         };

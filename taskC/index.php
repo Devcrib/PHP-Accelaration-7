@@ -1,8 +1,5 @@
 <?php
 
-//define our grade range
-
-//include 'data.json';
 
 class StudentResult {
 
@@ -27,10 +24,6 @@ class StudentResult {
         asort($this->score);
     }
 
-    public function studentDetail($id) {
-        $this->student[$id]->$newprop;
-        return $this->student[$id];
-    }
 
     /**
      * @param $id
@@ -60,7 +53,7 @@ class StudentResult {
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function highest_grade() {
         $max = ['A' => 0, 'B' => 0, 'C' => 0, 'D' => 0, 'E' => 0, 'F' => 0 ];
@@ -72,14 +65,14 @@ class StudentResult {
             if ($grade == 'E') $max['E'] += 1;
             if ($grade == 'F') $max['F'] += 1;
         }
-        return max($max);
+        foreach ($max as $key => $max_grade_number) {
+            if ($max_grade_number == max($max)) return $key .' is the grade with the highest number';
+        }
     }
 }
 
 $studentData = new StudentResult('data.json');
 
 $studentData->getScore();
-var_dump($studentData->highest_grade());
+($studentData->highest_grade());
 
- //print_r($studentData->studentDetail(50));
-//var_dump($studentData->score);
