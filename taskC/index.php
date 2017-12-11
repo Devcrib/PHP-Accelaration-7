@@ -27,6 +27,11 @@ class StudentResult {
         asort($this->score);
     }
 
+    public function studentDetail($id) {
+        $this->student[$id]->$newprop;
+        return $this->student[$id];
+    }
+
     /**
      * @param $id
      * @return stdClass
